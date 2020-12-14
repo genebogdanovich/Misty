@@ -11,7 +11,7 @@ import Foundation
 extension WeatherWebService {
     struct OpenWeatherAPI {
         static let scheme = "https"
-        static let host = "api.openweather.org"
+        static let host = "api.openweathermap.org"
         static let path = "/data/2.5"
         // FIXME: If you want to test drive the app, add your OpenWeatherMap API key here. Go to https://home.openweathermap.org/users/sign_up. It will take you 2 minutes.
         static let key = Secrets.openWeatherMapAPIKey
