@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct CurrentWeatherView: View {
     @ObservedObject var viewModel: CurrentWeatherViewModel
@@ -13,7 +14,7 @@ struct CurrentWeatherView: View {
     var body: some View {
         content()
             .onAppear(perform: viewModel.refresh)
-            .navigationBarTitle(viewModel.city)
+            .navigationBarTitle("Misty")
         
         
     }
@@ -45,6 +46,6 @@ private extension CurrentWeatherView {
 
 struct CurrentWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentWeatherView(viewModel: CurrentWeatherViewModel(city: "Minsk", weatherWebService: WeatherWebService()))
+        CurrentWeatherView(viewModel: CurrentWeatherViewModel(coordinate: CLLocationCoordinate2D(latitude: 53.9, longitude: 27.55), weatherWebService: WeatherWebService()))
     }
 }

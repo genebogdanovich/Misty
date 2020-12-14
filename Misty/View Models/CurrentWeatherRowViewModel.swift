@@ -15,8 +15,22 @@ struct CurrentWeatherRowViewModel {
     // Interpretation goes here...
     
     var temperature: String {
-        return String(format: "%.1f", item.main.temp)
+        return String(item.main.temp)
     }
+    
+    var maxTemperature: String {
+        return String(item.main.tempMax)
+    }
+    
+    var minTemperature: String {
+        return String(item.main.tempMin)
+    }
+    
+    var humidity: String {
+        return String(item.main.humidity)
+    }
+    
+    
     
     init(item: CurrentWeatherForecastResponse) {
         self.item = item

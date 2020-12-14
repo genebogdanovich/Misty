@@ -17,6 +17,21 @@ struct CurrentWeatherRowView: View {
                 Text("Temperature:")
                 Text("\(viewModel.temperature)")
             }
+            
+            HStack {
+                Text("Max temperature:")
+                Text("\(viewModel.maxTemperature)")
+            }
+            
+            HStack {
+                Text("Min temperature:")
+                Text("\(viewModel.minTemperature)")
+            }
+            
+            HStack {
+                Text("Humidity:")
+                Text("\(viewModel.humidity)")
+            }
         }
     }
     

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 // MARK: - OpenWeatherAPI
 extension WeatherWebService {
@@ -30,6 +31,25 @@ extension WeatherWebService {
             URLQueryItem(name: "APPID", value: OpenWeatherAPI.key),
         ]
         
+        
+        
+        return components
+    }
+    
+    func makeCurrentDayForecastComponents(withCoordinate coordinate: CLLocationCoordinate2D) -> URLComponents {
+        var components = URLComponents()
+        components.scheme = OpenWeatherAPI.scheme
+        components.host = OpenWeatherAPI.host
+        components.path = OpenWeatherAPI.path + "/weather"
+        
+        components.queryItems = [
+            URLQueryItem(name: "lat", value: coordinate.latitude.description),
+            URLQueryItem(name: "lon", value: coordinate.longitude.description),
+            URLQueryItem(name: "mode", value: "json"),
+            URLQueryItem(name: "units", value: "metric"),
+            URLQueryItem(name: "APPID", value: OpenWeatherAPI.key),
+        ]
+        print("URL HERE: \(components.url)")
         return components
     }
 }

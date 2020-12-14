@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import CoreLocation
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -20,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         let webService = WeatherWebService()
-        let viewModel = CurrentWeatherViewModel(city: "Minsk", weatherWebService: webService)
+        let viewModel = CurrentWeatherViewModel(coordinate: CLLocationCoordinate2D(latitude: 27.55, longitude: 53.90), weatherWebService: webService)
         
         let contentView = CurrentWeatherView(viewModel: viewModel)
 

@@ -7,12 +7,13 @@
 
 import Foundation
 import Combine
+import CoreLocation
 
 // MARK: - WeatherFetchable
 /// Describes an object that fetches weather data.
 protocol WeatherFetchable {
     func currentWeatherForecast(forCity city: String) -> AnyPublisher<CurrentWeatherForecastResponse, WeatherError>
-    
+    func currentWeatherForecast(forCoordinate coordinate: CLLocationCoordinate2D) -> AnyPublisher<CurrentWeatherForecastResponse, WeatherError>
 }
 
 // MARK: - WeatherWebService
@@ -27,9 +28,15 @@ class WeatherWebService {
 // MARK: - WeatherFetchable Conformance
 
 extension WeatherWebService: WeatherFetchable {
+    func currentWeatherForecast(forCoordinate coordinate: CLLocationCoordinate2D) -> AnyPublisher<CurrentWeatherForecastResponse, WeatherError> {
+        return forecast(with: makeCurrentDayForecastComponents(withCoordinate: coordinate))
+    }
+    
     func currentWeatherForecast(forCity city: String) -> AnyPublisher<CurrentWeatherForecastResponse, WeatherError> {
         return forecast(with: makeCurrentDayForecastComponents(withCity: city))
     }
+    
+    
     
     private func forecast<T>(with components: URLComponents) -> AnyPublisher<T, WeatherError> where T: Decodable {
         guard let url = components.url else {
@@ -38,7 +45,9 @@ extension WeatherWebService: WeatherFetchable {
         }
         return session.dataTaskPublisher(for: URLRequest(url: url))
             .mapError { error in .network(description: error.localizedDescription) }
+            .print("dataTaskPublisher")
             .flatMap(maxPublishers: .max(1)) { pair in
+                
                 decode(pair.data)
             }
             .eraseToAnyPublisher()
