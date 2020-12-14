@@ -12,8 +12,6 @@ import Combine
 struct CurrentWeatherRowViewModel {
     private let item: CurrentWeatherForecastResponse
     
-    // Interpretation goes here...
-    
     var temperature: String {
         return String(item.main.temp)
     }
