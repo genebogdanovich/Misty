@@ -32,6 +32,11 @@ struct CurrentWeatherRowView: View {
                 Text("Humidity:")
                 Text("\(viewModel.humidity)")
             }
+            
+            HStack {
+                Text("City:")
+                Text("\(viewModel.city)")
+            }
         }
     }
     

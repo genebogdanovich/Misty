@@ -44,8 +44,8 @@ private extension CurrentWeatherView {
     }
 }
 
-struct CurrentWeatherView_Previews: PreviewProvider {
-    static var previews: some View {
-        CurrentWeatherView(viewModel: CurrentWeatherViewModel(coordinate: CLLocationCoordinate2D(latitude: 53.9, longitude: 27.55), weatherWebService: WeatherWebService()))
-    }
-}
+//struct CurrentWeatherView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CurrentWeatherView(viewModel: CurrentWeatherViewModel(coordinate: CLLocationCoordinate2D(latitude: 53.9, longitude: 27.55), weatherWebService: WeatherWebService()))
+//    }
+//}

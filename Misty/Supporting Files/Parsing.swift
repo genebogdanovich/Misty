@@ -13,7 +13,7 @@ func decode<T: Decodable>(_ data: Data) -> AnyPublisher<T, WeatherError> {
     decoder.dateDecodingStrategy = .secondsSince1970
     
     return Just(data)
-        .print("decode")
+        
         .decode(type: T.self, decoder: decoder)
         .mapError { error in
             .parsing(description: error.localizedDescription)

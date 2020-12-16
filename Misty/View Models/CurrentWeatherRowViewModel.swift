@@ -28,6 +28,10 @@ struct CurrentWeatherRowViewModel {
         return String(item.main.humidity)
     }
     
+    var city: String {
+        return item.name
+    }
+    
     
     
     init(item: CurrentWeatherForecastResponse) {

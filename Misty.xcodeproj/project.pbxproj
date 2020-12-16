@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		73261BE625824BE600244796 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73261BE525824BE600244796 /* Secrets.swift */; };
+		734DA4C7258A10D100124531 /* CLLocationManagerCombineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734DA4C6258A10D100124531 /* CLLocationManagerCombineDelegate.swift */; };
+		734DA4CB258A114900124531 /* CLLocationManagerPublicist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734DA4CA258A114900124531 /* CLLocationManagerPublicist.swift */; };
+		734DA4CF258A16E600124531 /* WeatherLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734DA4CE258A16E600124531 /* WeatherLocationManager.swift */; };
 		7362325D257F43CF0088396D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7362325C257F43CF0088396D /* AppDelegate.swift */; };
 		7362325F257F43CF0088396D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7362325E257F43CF0088396D /* SceneDelegate.swift */; };
 		73623263257F43D10088396D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73623262257F43D10088396D /* Assets.xcassets */; };
@@ -26,6 +29,9 @@
 
 /* Begin PBXFileReference section */
 		73261BE525824BE600244796 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		734DA4C6258A10D100124531 /* CLLocationManagerCombineDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManagerCombineDelegate.swift; sourceTree = "<group>"; };
+		734DA4CA258A114900124531 /* CLLocationManagerPublicist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManagerPublicist.swift; sourceTree = "<group>"; };
+		734DA4CE258A16E600124531 /* WeatherLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocationManager.swift; sourceTree = "<group>"; };
 		73623259257F43CF0088396D /* Misty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Misty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7362325C257F43CF0088396D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7362325E257F43CF0088396D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +72,16 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		734DA4C5258A108F00124531 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				734DA4C6258A10D100124531 /* CLLocationManagerCombineDelegate.swift */,
+				734DA4CA258A114900124531 /* CLLocationManagerPublicist.swift */,
+				734DA4CE258A16E600124531 /* WeatherLocationManager.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		73623250257F43CF0088396D = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +101,7 @@
 		7362325B257F43CF0088396D /* Misty */ = {
 			isa = PBXGroup;
 			children = (
+				734DA4C5258A108F00124531 /* Location */,
 				7387DE5125874F7C00DBBA8F /* Views */,
 				7387DE4925874B3100DBBA8F /* View Models */,
 				7387DE412587444A00DBBA8F /* Supporting Files */,
@@ -92,6 +109,7 @@
 				73261BE425824BCF00244796 /* Networking */,
 				7387DE5925875A8B00DBBA8F /* App */,
 				7362326A257F43D10088396D /* Info.plist */,
+				73623267257F43D10088396D /* LaunchScreen.storyboard */,
 				73623264257F43D10088396D /* Preview Content */,
 			);
 			path = Misty;
@@ -118,7 +136,6 @@
 			children = (
 				7387DE422587449900DBBA8F /* Parsing.swift */,
 				73623262257F43D10088396D /* Assets.xcassets */,
-				73623267257F43D10088396D /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -225,6 +242,9 @@
 				7387DE472587455100DBBA8F /* OpenWeatherAPI.swift in Sources */,
 				73261BE625824BE600244796 /* Secrets.swift in Sources */,
 				7387DE5325874FA700DBBA8F /* CurrentWeatherRowView.swift in Sources */,
+				734DA4C7258A10D100124531 /* CLLocationManagerCombineDelegate.swift in Sources */,
+				734DA4CF258A16E600124531 /* WeatherLocationManager.swift in Sources */,
+				734DA4CB258A114900124531 /* CLLocationManagerPublicist.swift in Sources */,
 				7387DE4F25874BE400DBBA8F /* CurrentWeatherRowViewModel.swift in Sources */,
 				7362325F257F43CF0088396D /* SceneDelegate.swift in Sources */,
 				7387DE432587449900DBBA8F /* Parsing.swift in Sources */,

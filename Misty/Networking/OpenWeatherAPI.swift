@@ -49,7 +49,7 @@ extension WeatherWebService {
             URLQueryItem(name: "units", value: "metric"),
             URLQueryItem(name: "APPID", value: OpenWeatherAPI.key),
         ]
-        print("URL HERE: \(components.url)")
+        
         return components
     }
 }
