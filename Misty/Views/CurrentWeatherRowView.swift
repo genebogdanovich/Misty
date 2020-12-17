@@ -37,6 +37,31 @@ struct CurrentWeatherRowView: View {
                 Text("City:")
                 Text("\(viewModel.city)")
             }
+            
+            HStack {
+                Text("Summary:")
+                Text("\(viewModel.summary)")
+            }
+            
+            HStack {
+                Text("Feels like:")
+                Text("\(viewModel.feelsLikeTemperature)")
+            }
+            
+            HStack {
+                Text("Pressure:")
+                Text("\(viewModel.pressure)")
+            }
+            
+            HStack {
+                Text("Sunrise:")
+                Text("\(viewModel.sunriseTime)")
+            }
+            
+            HStack {
+                Text("Sunset:")
+                Text("\(viewModel.sunsetTime)")
+            }
         }
     }
     

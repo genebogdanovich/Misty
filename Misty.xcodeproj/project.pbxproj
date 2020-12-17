@@ -25,6 +25,8 @@
 		7387DE4F25874BE400DBBA8F /* CurrentWeatherRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7387DE4E25874BE400DBBA8F /* CurrentWeatherRowViewModel.swift */; };
 		7387DE5325874FA700DBBA8F /* CurrentWeatherRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7387DE5225874FA700DBBA8F /* CurrentWeatherRowView.swift */; };
 		7387DE562587505100DBBA8F /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7387DE552587505100DBBA8F /* CurrentWeatherView.swift */; };
+		73F40C59258B33060069F616 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F40C58258B33060069F616 /* Formatters.swift */; };
+		73F40C5C258B34F50069F616 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F40C5B258B34F50069F616 /* String+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		7387DE4E25874BE400DBBA8F /* CurrentWeatherRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherRowViewModel.swift; sourceTree = "<group>"; };
 		7387DE5225874FA700DBBA8F /* CurrentWeatherRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherRowView.swift; sourceTree = "<group>"; };
 		7387DE552587505100DBBA8F /* CurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherView.swift; sourceTree = "<group>"; };
+		73F40C58258B33060069F616 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		73F40C5B258B34F50069F616 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String+.swift"; path = "Misty/Supporting Files/String+.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,7 @@
 			children = (
 				7387DE422587449900DBBA8F /* Parsing.swift */,
 				73623262257F43D10088396D /* Assets.xcassets */,
+				73F40C58258B33060069F616 /* Formatters.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 			children = (
 				7387DE4A25874B8700DBBA8F /* CurrentWeatherViewModel.swift */,
 				7387DE4E25874BE400DBBA8F /* CurrentWeatherRowViewModel.swift */,
+				73F40C5B258B34F50069F616 /* String+.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -239,6 +245,7 @@
 			files = (
 				7387DE3C2587414400DBBA8F /* CurrentWeatherForecastResponse.swift in Sources */,
 				7362325D257F43CF0088396D /* AppDelegate.swift in Sources */,
+				73F40C59258B33060069F616 /* Formatters.swift in Sources */,
 				7387DE472587455100DBBA8F /* OpenWeatherAPI.swift in Sources */,
 				73261BE625824BE600244796 /* Secrets.swift in Sources */,
 				7387DE5325874FA700DBBA8F /* CurrentWeatherRowView.swift in Sources */,
@@ -250,6 +257,7 @@
 				7387DE432587449900DBBA8F /* Parsing.swift in Sources */,
 				7387DE562587505100DBBA8F /* CurrentWeatherView.swift in Sources */,
 				7387DE382587406900DBBA8F /* WeatherWebService.swift in Sources */,
+				73F40C5C258B34F50069F616 /* String+.swift in Sources */,
 				7387DE4B25874B8700DBBA8F /* CurrentWeatherViewModel.swift in Sources */,
 				7387DE3F2587426900DBBA8F /* WeatherError.swift in Sources */,
 			);
