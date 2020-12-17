@@ -37,16 +37,31 @@ extension WeatherWebService {
     }
     
     func makeCurrentDayForecastComponents(withCoordinate coordinate: CLLocationCoordinate2D) -> URLComponents {
+        
+        
+        
         var components = URLComponents()
         components.scheme = OpenWeatherAPI.scheme
         components.host = OpenWeatherAPI.host
         components.path = OpenWeatherAPI.path + "/weather"
         
+        let unitsURLQueryItem: URLQueryItem = {
+            if UserDefaults.standard.integer(forKey: "unit_type") == 0 {
+                return URLQueryItem(name: "units", value: "metric")
+            } else if UserDefaults.standard.integer(forKey: "unit_type") == 1 {
+                return URLQueryItem(name: "units", value: "imperial")
+            } else if UserDefaults.standard.integer(forKey: "unit_type") == 2 {
+                return URLQueryItem(name: "units", value: "kelvin")
+            } else {
+                fatalError()
+            }
+        }()
+        
         components.queryItems = [
             URLQueryItem(name: "lat", value: coordinate.latitude.description),
             URLQueryItem(name: "lon", value: coordinate.longitude.description),
             URLQueryItem(name: "mode", value: "json"),
-            URLQueryItem(name: "units", value: "metric"),
+            unitsURLQueryItem,
             URLQueryItem(name: "APPID", value: OpenWeatherAPI.key),
         ]
         
