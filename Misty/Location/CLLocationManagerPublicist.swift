@@ -34,7 +34,12 @@ class CLLocationManagerPublicist: NSObject, CLLocationManagerCombineDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        // TODO: Error handling...
+        if let error = error as? CLError, error.code == .denied {
+            // Location updates are not authorized.
+            manager.stopMonitoringSignificantLocationChanges()
+            return
+        }
+        // TODO: Notify users of any errors.
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

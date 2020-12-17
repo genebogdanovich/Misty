@@ -13,11 +13,12 @@ import CoreLocation
 class CurrentWeatherViewModel: ObservableObject {
     @Published var dataSource: CurrentWeatherRowViewModel?
     
-    
-    
     private let weatherWebService: WeatherFetchable
     private var subscriptions = Set<AnyCancellable>()
     let coordinate: CLLocationCoordinate2D
+    let locationManager = WeatherLocationManager()
+    
+    var cancellables = [AnyCancellable]()
     
     init(coordinate: CLLocationCoordinate2D, weatherWebService: WeatherFetchable) {
         self.weatherWebService = weatherWebService
@@ -25,9 +26,17 @@ class CurrentWeatherViewModel: ObservableObject {
     }
     
     func refresh() {
-        weatherWebService
-            .currentWeatherForecast(forCoordinate: coordinate)
-            .print("CurrentWeatherViewModel")
+        
+        
+//        locationManager.$authorizationStatus
+//            .sink(receiveValue: { _ in
+//                print("Got em!")
+//            })
+//            .store(in: &subscriptions)
+        
+        locationManager.$location
+            .retry(3)
+            .flatMap { self.weatherWebService.currentWeatherForecast(forCoordinate: $0!.coordinate) }
             .map(CurrentWeatherRowViewModel.init)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] value in
@@ -45,5 +54,13 @@ class CurrentWeatherViewModel: ObservableObject {
                 self.dataSource = weather
             })
             .store(in: &subscriptions)
+        
+        
+        
+        
+
+            
+            
+            
     }
 }
