@@ -17,7 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         let webService = WeatherWebService()
-        let viewModel = CurrentWeatherViewModel(coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 0), weatherWebService: webService)
+        let locationManager = WeatherLocationManager()
+        let viewModel = CurrentWeatherViewModel(locationPublisher: locationManager.locationPublisher, weatherWebService: webService)
         let contentView = CurrentWeatherView(viewModel: viewModel)
         
         // Use a UIHostingController as window root view controller.

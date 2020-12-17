@@ -14,29 +14,16 @@ class CurrentWeatherViewModel: ObservableObject {
     @Published var dataSource: CurrentWeatherRowViewModel?
     
     private let weatherWebService: WeatherFetchable
-    private var subscriptions = Set<AnyCancellable>()
-    let coordinate: CLLocationCoordinate2D
-    let locationManager = WeatherLocationManager()
+    private let locationManager = WeatherLocationManager()
+    private let locationPublisher: AnyPublisher<[CLLocation], Never>
     
-    var cancellables = [AnyCancellable]()
-    
-    init(coordinate: CLLocationCoordinate2D, weatherWebService: WeatherFetchable) {
-        self.weatherWebService = weatherWebService
-        self.coordinate = coordinate
-    }
+    private var cancellables = Set<AnyCancellable>()
     
     func refresh() {
-        
-        
-//        locationManager.$authorizationStatus
-//            .sink(receiveValue: { _ in
-//                print("Got em!")
-//            })
-//            .store(in: &subscriptions)
-        
-        locationManager.$location
-            .retry(3)
-            .flatMap { self.weatherWebService.currentWeatherForecast(forCoordinate: $0!.coordinate) }
+        locationPublisher
+            // Convert an array of CLLocation into a Publisher itself
+            .flatMap(Publishers.Sequence.init(sequence:))
+            .flatMap { self.weatherWebService.currentWeatherForecast(forCoordinate: $0.coordinate) }
             .map(CurrentWeatherRowViewModel.init)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] value in
@@ -47,20 +34,15 @@ class CurrentWeatherViewModel: ObservableObject {
                 case .finished:
                     break
                 }
-                
             }, receiveValue: { [weak self] weather in
-                
                 guard let self = self else { return }
                 self.dataSource = weather
             })
-            .store(in: &subscriptions)
-        
-        
-        
-        
-
-            
-            
-            
+            .store(in: &cancellables)
+    }
+    
+    init(locationPublisher: AnyPublisher<[CLLocation], Never>, weatherWebService: WeatherFetchable) {
+        self.weatherWebService = weatherWebService
+        self.locationPublisher = locationPublisher
     }
 }

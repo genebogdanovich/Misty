@@ -9,24 +9,19 @@ import Foundation
 import Combine
 import CoreLocation
 
-class WeatherLocationManager: ObservableObject {
-    @Published var authorizationStatus = CLAuthorizationStatus.notDetermined
-    @Published var location: CLLocation? // Maybe regular Publisher here?
+class WeatherLocationManager {
+    let locationPublisher: AnyPublisher<[CLLocation], Never>
     
     let manager: CLLocationManager
     let publicist: CLLocationManagerCombineDelegate
     
-    var cancellables = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
         
         if CLLocationManager.locationServicesEnabled() {
             
-            
-            
             let manager = CLLocationManager()
-            
-            
             
             manager.requestWhenInUseAuthorization()
             let publicist = CLLocationManagerPublicist()
@@ -34,6 +29,10 @@ class WeatherLocationManager: ObservableObject {
             
             self.manager = manager
             self.publicist = publicist
+            
+            // Publishing location
+            
+            locationPublisher = publicist.locationPublisher()
             
             // Publishing authorization
             
@@ -43,25 +42,10 @@ class WeatherLocationManager: ObservableObject {
                 .sink(receiveValue: beginUpdates(_:))
                 .store(in: &cancellables)
             
-            // Publishing location
-            
-            let locationPublisher = publicist.locationPublisher()
-            
-            locationPublisher
-                .print("locationPublisher")
-                // Convert an array of CLLocation into a Publisher itself
-                .flatMap(Publishers.Sequence.init(sequence:))
-                // Wrap in Optional type
-                .map { $0 as CLLocation? }
-                .receive(on: DispatchQueue.main)
-                .assign(to: \.location, on: self)
-                .store(in: &cancellables)
-            
-            
         } else {
+            // TODO: Error handling!
             fatalError()
         }
-        
     }
     
     /// This method will start updating location as soon as it receives authorizedAlways or authorizedWhenInUse CLAuthorizationStatus.
@@ -75,7 +59,6 @@ class WeatherLocationManager: ObservableObject {
             }
             
             self.manager.startMonitoringSignificantLocationChanges()
-            
         }
     }
 }
