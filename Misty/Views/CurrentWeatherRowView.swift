@@ -53,15 +53,23 @@ struct CurrentWeatherRowView: View {
                 Text("\(viewModel.pressure)")
             }
             
-            HStack {
-                Text("Sunrise:")
-                Text("\(viewModel.sunriseTime)")
+            Group {
+                HStack {
+                    Text("Sunrise:")
+                    Text("\(viewModel.sunriseTime)")
+                }
+                
+                HStack {
+                    Text("Sunset:")
+                    Text("\(viewModel.sunsetTime)")
+                }
+                
             }
             
-            HStack {
-                Text("Sunset:")
-                Text("\(viewModel.sunsetTime)")
-            }
+            
+            
+            viewModel.icon
+            
         }
     }
     

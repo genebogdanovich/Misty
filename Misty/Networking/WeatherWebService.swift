@@ -44,7 +44,6 @@ extension WeatherWebService: WeatherFetchable {
             return Fail(error: error).eraseToAnyPublisher()
         }
         return session.dataTaskPublisher(for: URLRequest(url: url))
-            .print()
             .mapError { error in .network(description: error.localizedDescription) }
             
             .flatMap(maxPublishers: .max(1)) { pair in
