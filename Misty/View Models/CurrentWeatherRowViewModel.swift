@@ -25,7 +25,7 @@ struct CurrentWeatherRowViewModel {
     }
     
     var humidity: String {
-        return "\(item.main.humidity)%"
+        return "\(Int(item.main.humidity))%"
     }
     
     var city: String {
@@ -42,7 +42,7 @@ struct CurrentWeatherRowViewModel {
     }
     
     var pressure: String {
-        return "\(item.main.pressure) hPa"
+        return "\(Int(item.main.pressure)) hPa"
     }
     
     var sunriseTime: String {
