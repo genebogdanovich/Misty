@@ -27,12 +27,18 @@ class WeatherLocationManager {
             let publicist = CLLocationManagerPublicist()
             manager.delegate = publicist
             
+            
             self.manager = manager
             self.publicist = publicist
             
             // Publishing location
             
             locationPublisher = publicist.locationPublisher()
+                .handleEvents(receiveSubscription: { _ in
+                    // Manually requesting location to update weather right away if settings change.
+                    manager.requestLocation()
+                })
+                .eraseToAnyPublisher()
             
             // Publishing authorization
             

@@ -13,10 +13,10 @@ struct CurrentWeatherView: View {
     
     var body: some View {
         content()
-            .onAppear(perform: viewModel.refresh)
+            .onAppear(perform: {
+                viewModel.refresh()
+            })
             .navigationBarTitle("Misty")
-        
-        
     }
     
     init(viewModel: CurrentWeatherViewModel) {

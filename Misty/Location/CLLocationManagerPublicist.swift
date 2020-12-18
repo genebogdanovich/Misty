@@ -37,6 +37,7 @@ class CLLocationManagerPublicist: NSObject, CLLocationManagerCombineDelegate {
         if let error = error as? CLError, error.code == .denied {
             // Location updates are not authorized.
             manager.stopMonitoringSignificantLocationChanges()
+            
             return
         }
         // TODO: Notify users of any errors.

@@ -38,8 +38,6 @@ extension WeatherWebService {
     
     func makeCurrentDayForecastComponents(withCoordinate coordinate: CLLocationCoordinate2D) -> URLComponents {
         
-        
-        
         var components = URLComponents()
         components.scheme = OpenWeatherAPI.scheme
         components.host = OpenWeatherAPI.host

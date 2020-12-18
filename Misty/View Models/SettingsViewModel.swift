@@ -14,6 +14,10 @@ class SettingsViewModel: ObservableObject {
     static let unitTypes = ["Celsius", "Fahrenheit", "Kelvin"]
     
     @Published(key: "unit_type") var type = 0
+    // FIXME: This doesn't update weather right away.
+    // Try did set
+    // Try updating WeatherView when we load it!!!
+    
 }
 
 
