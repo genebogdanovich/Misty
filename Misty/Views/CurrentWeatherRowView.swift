@@ -14,61 +14,38 @@ struct CurrentWeatherRowView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Temperature:")
-                Text("\(viewModel.temperature)")
+                viewModel.icon
+                    .font(.title3)
+                Text(viewModel.location)
+                    .font(.title3)
             }
+            .padding(4)
+            Text("At \(viewModel.time) it was")
+                .font(.body)
+            
+            
+            Text("\(viewModel.temperature)")
+                .font(.system(size: 64))
+            
+            
+            
             
             HStack {
-                Text("Max temperature:")
-                Text("\(viewModel.maxTemperature)")
-            }
-            
-            HStack {
-                Text("Min temperature:")
-                Text("\(viewModel.minTemperature)")
-            }
-            
-            HStack {
-                Text("Humidity:")
-                Text("\(viewModel.humidity)")
-            }
-            
-            HStack {
-                Text("City:")
-                Text("\(viewModel.city)")
-            }
-            
-            HStack {
-                Text("Summary:")
-                Text("\(viewModel.summary)")
-            }
-            
-            HStack {
-                Text("Feels like:")
-                Text("\(viewModel.feelsLikeTemperature)")
-            }
-            
-            HStack {
-                Text("Pressure:")
-                Text("\(viewModel.pressure)")
-            }
-            
-            Group {
-                HStack {
-                    Text("Sunrise:")
-                    Text("\(viewModel.sunriseTime)")
+                VStack() {
+                    WeatherInfoItemView(title: "Feels like", value: viewModel.feelsLikeTemperature)
+                    WeatherInfoItemView(title: "High", value: viewModel.maxTemperature)
+                    WeatherInfoItemView(title: "Humidity", value: viewModel.humidity)
+                    WeatherInfoItemView(title: "Sunrise", value: viewModel.sunriseTime)
                 }
-                
-                HStack {
-                    Text("Sunset:")
-                    Text("\(viewModel.sunsetTime)")
+                VStack() {
+                    WeatherInfoItemView(title: "Wind speed", value: viewModel.windSpeed)
+                    WeatherInfoItemView(title: "Low", value: viewModel.minTemperature)
+                    WeatherInfoItemView(title: "Pressure", value: viewModel.pressure)
+                    WeatherInfoItemView(title: "Sunset", value: viewModel.sunsetTime)
                 }
-                
             }
-            
-            
-            
-            viewModel.icon
+            Text(viewModel.summary)
+                .font(.body)
             
         }
     }
@@ -77,3 +54,24 @@ struct CurrentWeatherRowView: View {
         self.viewModel = viewModel
     }
 }
+
+struct WeatherInfoItemView: View {
+    let title: String
+    let value: String
+    
+    var body: some View {
+        VStack {
+            Text(title.uppercased())
+                .font(.callout)
+                .fontWeight(.light)
+            
+            Text(value)
+                .font(.subheadline)
+            
+        }
+        .padding(4)
+        
+    }
+}
+
+

@@ -28,7 +28,7 @@ struct CurrentWeatherRowViewModel {
         return "\(Int(item.main.humidity))%"
     }
     
-    var city: String {
+    var location: String {
         return item.name
     }
     
@@ -46,15 +46,21 @@ struct CurrentWeatherRowViewModel {
     }
     
     var sunriseTime: String {
-        let unixTime = Double(item.sys.sunrise)
+        let unixTime = item.sys.sunrise
         let date = Date(timeIntervalSince1970: unixTime)
+        
         return timeFormatter.string(from: date)
     }
     
     var sunsetTime: String {
-        let unixTime = Double(item.sys.sunset)
+        let unixTime = item.sys.sunset
         let date = Date(timeIntervalSince1970: unixTime)
+        
         return timeFormatter.string(from: date)
+    }
+    
+    var windSpeed: String {
+        return "\(Int(item.wind.speed)) m/s ESE"
     }
     
     
@@ -88,6 +94,13 @@ struct CurrentWeatherRowViewModel {
         default:
             return Image(systemName: "questionmark")
         }
+    }
+    
+    var time: String {
+        let unixTime = item.dt
+        let date = Date(timeIntervalSince1970: unixTime)
+        
+        return timeFormatter.string(from: date)
     }
     
     

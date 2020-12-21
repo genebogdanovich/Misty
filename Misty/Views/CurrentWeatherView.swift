@@ -10,6 +10,7 @@ import CoreLocation
 
 struct CurrentWeatherView: View {
     @ObservedObject var viewModel: CurrentWeatherViewModel
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         content()
@@ -28,7 +29,26 @@ struct CurrentWeatherView: View {
 private extension CurrentWeatherView {
     func content() -> some View {
         if let viewModel = viewModel.dataSource {
-            return AnyView(details(for: viewModel))
+            return AnyView(
+                
+                
+                ZStack {
+                    Image("Winter")
+                        .resizable()
+                        .scaledToFill()
+                    
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color("GradientStartColor"), colorScheme == .dark ? .black : .white]), startPoint: .top, endPoint: .bottom)
+                                        .opacity(0.85))
+                    
+                    
+                    
+                    
+                    
+                    details(for: viewModel)
+                    
+                })
         } else {
             return AnyView(loading)
         }
