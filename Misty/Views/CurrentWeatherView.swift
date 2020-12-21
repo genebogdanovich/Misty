@@ -39,8 +39,7 @@ private extension CurrentWeatherView {
     }
     
     var loading: some View {
-        return Text("Loading...")
-            .foregroundColor(.gray)
+        return LoadingView()
     }
 }
 

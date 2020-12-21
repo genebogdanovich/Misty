@@ -31,6 +31,7 @@
 		7387DE562587505100DBBA8F /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7387DE552587505100DBBA8F /* CurrentWeatherView.swift */; };
 		73F40C59258B33060069F616 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F40C58258B33060069F616 /* Formatters.swift */; };
 		73F40C5C258B34F50069F616 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F40C5B258B34F50069F616 /* String+.swift */; };
+		73F4D496259069CF001CD303 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F4D495259069CF001CD303 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		7387DE552587505100DBBA8F /* CurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherView.swift; sourceTree = "<group>"; };
 		73F40C58258B33060069F616 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		73F40C5B258B34F50069F616 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String+.swift"; path = "Misty/Supporting Files/String+.swift"; sourceTree = SOURCE_ROOT; };
+		73F4D495259069CF001CD303 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				7387DE5225874FA700DBBA8F /* CurrentWeatherRowView.swift */,
 				7387DE552587505100DBBA8F /* CurrentWeatherView.swift */,
 				734B7540258B841D004808AE /* SettingsView.swift */,
+				73F4D495259069CF001CD303 /* LoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				73F40C59258B33060069F616 /* Formatters.swift in Sources */,
 				7387DE472587455100DBBA8F /* OpenWeatherAPI.swift in Sources */,
 				73261BE625824BE600244796 /* Secrets.swift in Sources */,
+				73F4D496259069CF001CD303 /* LoadingView.swift in Sources */,
 				7387DE5325874FA700DBBA8F /* CurrentWeatherRowView.swift in Sources */,
 				734DA4C7258A10D100124531 /* CLLocationManagerCombineDelegate.swift in Sources */,
 				734DA4CF258A16E600124531 /* WeatherLocationManager.swift in Sources */,
