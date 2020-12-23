@@ -20,9 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let webService = WeatherWebService()
         let locationManager = WeatherLocationManager()
-        let viewModel = CurrentWeatherViewModel(locationPublisher: locationManager.locationPublisher, weatherWebService: webService)
+        let currentWeatherViewModel = CurrentWeatherViewModel(locationPublisher: locationManager.locationPublisher, weatherWebService: webService)
+        let weeklyWeatherViewModel = WeeklyWeatherViewModel(weatherWebService: webService, locationPublisher: locationManager.locationPublisher)
         
-        let contentView = TabBarView(currentWeatherViewModel: viewModel).environmentObject(defaults)
+        
+        let contentView = TabBarView(currentWeatherViewModel: currentWeatherViewModel, weeklyWeatherViewModel: weeklyWeatherViewModel).environmentObject(defaults)
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

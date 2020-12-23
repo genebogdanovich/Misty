@@ -20,7 +20,6 @@ class CurrentWeatherViewModel: ObservableObject {
     
     func refresh() {
         locationPublisher
-            
             // Convert an array of CLLocation into a Publisher itself
             .flatMap(Publishers.Sequence.init(sequence:))
             .flatMap { self.weatherWebService.currentWeatherForecast(forCoordinate: $0.coordinate) }

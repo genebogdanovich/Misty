@@ -13,15 +13,15 @@ struct CurrentWeatherRowViewModel {
     private let item: CurrentWeatherForecastResponse
     
     var temperature: String {
-        return "\(Int(item.main.temp))°"
+        return "\(Int(item.main.temperature))°"
     }
     
     var maxTemperature: String {
-        return "\(Int(item.main.tempMax))°"
+        return "\(Int(item.main.maxTemperature))°"
     }
     
     var minTemperature: String {
-        return "\(Int(item.main.tempMin))°"
+        return "\(Int(item.main.minTemperature))°"
     }
     
     var humidity: String {

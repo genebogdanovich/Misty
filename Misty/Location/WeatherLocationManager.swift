@@ -11,7 +11,6 @@ import CoreLocation
 
 class WeatherLocationManager {
     let locationPublisher: AnyPublisher<[CLLocation], Never>
-    
     let manager: CLLocationManager
     let publicist: CLLocationManagerCombineDelegate
     
@@ -26,7 +25,6 @@ class WeatherLocationManager {
             manager.requestWhenInUseAuthorization()
             let publicist = CLLocationManagerPublicist()
             manager.delegate = publicist
-            
             
             self.manager = manager
             self.publicist = publicist
@@ -56,14 +54,12 @@ class WeatherLocationManager {
     
     /// This method will start updating location as soon as it receives authorizedAlways or authorizedWhenInUse CLAuthorizationStatus.
     func beginUpdates(_ authorizationStatus: CLAuthorizationStatus) {
-        
         if authorizationStatus == .authorizedAlways || authorizationStatus == .authorizedWhenInUse {
             
             if !CLLocationManager.significantLocationChangeMonitoringAvailable() {
                 // The device does not support this service.
                 return
             }
-            
             self.manager.startMonitoringSignificantLocationChanges()
         }
     }

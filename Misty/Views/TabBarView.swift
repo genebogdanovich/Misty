@@ -10,6 +10,7 @@ import SwiftUI
 struct TabBarView: View {
     
     let currentWeatherViewModel: CurrentWeatherViewModel
+    let weeklyWeatherViewModel: WeeklyWeatherViewModel
     
     var body: some View {
         TabView {
@@ -18,17 +19,16 @@ struct TabBarView: View {
                 Text("Now")
             }
             
+            WeeklyWeatherView(viewModel: weeklyWeatherViewModel).tabItem {
+                Image(systemName: "calendar")
+                Text("Week")
+            }
+            
             SettingsView(viewModel: SettingsViewModel()).tabItem {
                 Image(systemName: "gear")
                 Text("Settings")
             }
-            
         }
+        .background(Color.red)
     }
 }
-
-//struct TabBarView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TabBarView()
-//    }
-//}

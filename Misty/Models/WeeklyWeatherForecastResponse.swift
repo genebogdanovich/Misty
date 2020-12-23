@@ -17,15 +17,25 @@ struct WeeklyForecastResponse: Codable {
     
     struct MainClass: Codable {
         let temp: Double
+        let maxTemp: Double
+        let minTemp: Double
+        
+        enum CodingKeys: String, CodingKey {
+            case temp
+            case maxTemp = "temp_max"
+            case minTemp = "temp_min"
+        }
     }
     
     struct Weather: Codable {
         let main: MainEnum
         let weatherDescription: String
+        let icon: String
         
         enum CodingKeys: String, CodingKey {
             case main
             case weatherDescription = "description"
+            case icon
         }
     }
     
@@ -33,5 +43,6 @@ struct WeeklyForecastResponse: Codable {
         case clear = "Clear"
         case clouds = "Clouds"
         case rain = "Rain"
+        case snow = "Snow"
     }
 }
