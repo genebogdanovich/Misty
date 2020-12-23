@@ -9,46 +9,47 @@ import SwiftUI
 import CoreLocation
 
 struct CurrentWeatherView: View {
-    @ObservedObject var viewModel: CurrentWeatherViewModel
     @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var viewModel: CurrentWeatherViewModel
     
     var body: some View {
-        content()
-            .onAppear(perform: {
-                viewModel.refresh()
-            })
-            .navigationBarTitle("Misty")
+        NavigationView {
+            content()
+                .onAppear(perform: {
+                    viewModel.refresh()
+                })
+                .navigationBarTitle("Now", displayMode: .inline)
+        }
     }
     
     init(viewModel: CurrentWeatherViewModel) {
         self.viewModel = viewModel
     }
-    
 }
 
 private extension CurrentWeatherView {
     func content() -> some View {
         if let viewModel = viewModel.dataSource {
             return AnyView(
-                
-                
                 ZStack {
                     Image("Winter")
                         .resizable()
                         .scaledToFill()
+                        .edgesIgnoringSafeArea(.vertical)
                     
                     Rectangle()
                         .foregroundColor(.clear)
-                        .background(LinearGradient(gradient: Gradient(colors: [Color("GradientStartColor"), colorScheme == .dark ? .black : .white]), startPoint: .top, endPoint: .bottom)
-                                        .opacity(0.85))
-                    
-                    
-                    
-                    
-                    
+                        .background(
+                            LinearGradient(
+                                gradient: Gradient(colors: [Color("GradientStartColor"), colorScheme == .dark ? .black : .white]),
+                                startPoint: .top,
+                                endPoint: .bottom)
+                                .opacity(0.85)
+                        )
+                        .edgesIgnoringSafeArea(.vertical)
                     details(for: viewModel)
-                    
-                })
+                }
+            )
         } else {
             return AnyView(loading)
         }
@@ -62,9 +63,3 @@ private extension CurrentWeatherView {
         return LoadingView()
     }
 }
-
-//struct CurrentWeatherView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CurrentWeatherView(viewModel: CurrentWeatherViewModel(coordinate: CLLocationCoordinate2D(latitude: 53.9, longitude: 27.55), weatherWebService: WeatherWebService()))
-//    }
-//}

@@ -10,39 +10,31 @@ import SwiftUI
 struct WeeklyWeatherView: View {
     @ObservedObject var viewModel: WeeklyWeatherViewModel
     
-    init(viewModel: WeeklyWeatherViewModel) {
-        self.viewModel = viewModel
-    }
-    
     var body: some View {
         NavigationView {
-            
-        
-            List {
-                if viewModel.dataSource.isEmpty {
-                    emptySection
-                } else {
-                    forecastSection
-                }
-            }
-            .listStyle(PlainListStyle())
-            .navigationBarTitle("Week", displayMode: .inline)
-            
+            content()
+                .navigationBarTitle("Week", displayMode: .inline)
         }
+    }
+    
+    init(viewModel: WeeklyWeatherViewModel) {
+        self.viewModel = viewModel
     }
 }
 
 private extension WeeklyWeatherView {
-    var forecastSection: some View {
-//        Section {
-            ForEach(viewModel.dataSource, content: DailyWeatherRow.init(viewModel:))
-//        }
+    func content() -> some View {
+        if !viewModel.dataSource.isEmpty {
+            return AnyView(
+                List {
+                    ForEach(viewModel.dataSource, content: DailyWeatherRow.init(viewModel:))
+                }
+            )
+        } else {
+            return AnyView(loading)
+        }
     }
-    
-    var emptySection: some View {
-//        Section {
-            Text("No results")
-                .foregroundColor(.gray)
-//        }
+    var loading: some View {
+        return LoadingView()
     }
 }

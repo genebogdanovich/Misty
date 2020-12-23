@@ -14,14 +14,10 @@ class SettingsViewModel: ObservableObject {
     static let unitTypes = ["Celsius", "Fahrenheit", "Kelvin"]
     
     @Published(key: "unit_type") var type = 0
-    // FIXME: This doesn't update weather right away.
-    // Try did set
-    // Try updating WeatherView when we load it!!!
-    
 }
 
 
-// This takes care of saving our @Published property to UserDefaults.
+// This takes care of saving @Published property to UserDefaults.
 extension Published {
     init(wrappedValue defaultValue: Value, key: String) {
         let value = UserDefaults.standard.object(forKey: key) as? Value ?? defaultValue

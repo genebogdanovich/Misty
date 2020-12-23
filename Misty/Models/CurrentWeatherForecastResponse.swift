@@ -1,3 +1,10 @@
+//
+//  CurrentWeatherForecastResponse.swift
+//  Misty
+//
+//  Created by Gene Bogdanovich on 22.12.20.
+//
+
 import Foundation
 
 struct CurrentWeatherForecastResponse: Decodable {

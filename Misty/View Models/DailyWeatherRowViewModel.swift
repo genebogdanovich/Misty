@@ -19,56 +19,21 @@ struct DailyWeatherRowViewModel: Identifiable {
         return dayFormatter.string(from: item.date)
     }
     
-    var month: String {
-        return monthFormatter.string(from: item.date)
-    }
-    
-    var temperature: String {
-        return "\(Int(item.main.temp))"
+    var date: String {
+        return dateFormatter.string(from: item.date)
     }
     
     var minTemperature: String {
-        return "\(Int(item.main.minTemp))"
+        return "\(Int(item.main.minTemp))°"
     }
     
     var maxTemperature: String {
-        return "\(Int(item.main.maxTemp))"
+        return "\(Int(item.main.maxTemp))°"
     }
     
-    // FIXME: Refactor this
     var icon: Image {
-        
-        switch item.weather.first?.icon {
-        case "01d":
-            return Image(systemName: "sun.max.fill")
-        case "01n":
-            return Image(systemName: "moon.fill")
-        case "02d":
-            return Image(systemName: "cloud.sun.fill")
-        case "02n":
-            return Image(systemName: "cloud.moon.fill")
-        case "03d", "03n":
-            return Image(systemName: "cloud.fill")
-        case "04d", "04n":
-            return Image(systemName: "smoke.fill")
-        case "09d", "09n":
-            return Image(systemName: "cloud.heavyrain.fill")
-        case "10d":
-            return Image(systemName: "cloud.sun.rain.fill")
-        case "10n":
-            return Image(systemName: "cloud.moon.rain.fill")
-        case "11d", "11n":
-            return Image(systemName: "cloud.bolt.fill")
-        case "13d", "13n":
-            return Image(systemName: "snow")
-        case "50d", "50n":
-            return Image(systemName: "cloud.fog.fill")
-        default:
-            return Image(systemName: "questionmark")
-        }
+        WeatherWebService.OpenWeatherAPI.getIconImage(for: item.weather.first!.icon)
     }
-    
-    
     
     init(item: WeeklyForecastResponse.Item) {
         self.item = item

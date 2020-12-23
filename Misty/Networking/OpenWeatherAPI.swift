@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import SwiftUI
 
 // MARK: - OpenWeatherAPI
 extension WeatherWebService {
@@ -93,5 +94,38 @@ extension WeatherWebService {
         ]
         
         return components
+    }
+}
+
+extension WeatherWebService.OpenWeatherAPI {
+    static func getIconImage(for string: String) -> Image {
+        switch string {
+        case "01d":
+            return Image(systemName: "sun.max.fill")
+        case "01n":
+            return Image(systemName: "moon.fill")
+        case "02d":
+            return Image(systemName: "cloud.sun.fill")
+        case "02n":
+            return Image(systemName: "cloud.moon.fill")
+        case "03d", "03n":
+            return Image(systemName: "cloud.fill")
+        case "04d", "04n":
+            return Image(systemName: "smoke.fill")
+        case "09d", "09n":
+            return Image(systemName: "cloud.heavyrain.fill")
+        case "10d":
+            return Image(systemName: "cloud.sun.rain.fill")
+        case "10n":
+            return Image(systemName: "cloud.moon.rain.fill")
+        case "11d", "11n":
+            return Image(systemName: "cloud.bolt.fill")
+        case "13d", "13n":
+            return Image(systemName: "snow")
+        case "50d", "50n":
+            return Image(systemName: "cloud.fog.fill")
+        default:
+            return Image(systemName: "questionmark")
+        }
     }
 }

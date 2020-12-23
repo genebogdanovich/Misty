@@ -20,15 +20,12 @@ struct CurrentWeatherRowView: View {
                     .font(.title3)
             }
             .padding(4)
+            
             Text("At \(viewModel.time) it was")
                 .font(.body)
             
-            
             Text("\(viewModel.temperature)")
                 .font(.system(size: 64))
-            
-            
-            
             
             HStack {
                 VStack() {
@@ -44,9 +41,9 @@ struct CurrentWeatherRowView: View {
                     WeatherInfoItemView(title: "Sunset", value: viewModel.sunsetTime)
                 }
             }
+            
             Text(viewModel.summary)
                 .font(.body)
-            
         }
     }
     
@@ -64,13 +61,10 @@ struct WeatherInfoItemView: View {
             Text(title.uppercased())
                 .font(.callout)
                 .fontWeight(.light)
-            
             Text(value)
-                .font(.subheadline)
-            
+                .font(.body)
         }
         .padding(4)
-        
     }
 }
 
