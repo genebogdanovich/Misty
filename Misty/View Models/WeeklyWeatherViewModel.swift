@@ -37,7 +37,7 @@ class WeeklyWeatherViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    init(locationPublisher: AnyPublisher<[CLLocation], Never>, weatherWebService: WeatherFetchable) {
+    init(locationPublisher: AnyPublisher<[CLLocation], LocationError>, weatherWebService: WeatherFetchable) {
         self.weatherWebService = weatherWebService
         self.locationPublisher = locationPublisher
         
@@ -45,7 +45,9 @@ class WeeklyWeatherViewModel: ObservableObject {
             // Convert an array of CLLocation into a Publisher itself
             .flatMap(Publishers.Sequence.init(sequence:))
             .map { $0.coordinate }
-            .sink(receiveValue: fetchWeather(forCoordinate:))
+            .sink(receiveCompletion: {
+                print($0)
+            }, receiveValue: fetchWeather(forCoordinate:))
             .store(in: &cancellables)
     }
 }

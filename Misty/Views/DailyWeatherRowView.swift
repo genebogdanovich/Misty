@@ -26,16 +26,19 @@ struct DailyWeatherRow: View {
                 Text("\(viewModel.maxTemperature)")
                     .font(.headline)
                     .fontWeight(.bold)
-                    .frame(width: 32, alignment: .center)
+                    .frame(width: 32, alignment: .trailing)
+                    
 
                 Text("\(viewModel.minTemperature)")
-                    .font(.subheadline)
+                    .font(.headline)
                     .foregroundColor(.secondary)
-                    .frame(width: 32, alignment: .center)
+                    .frame(width: 32, alignment: .trailing)
+                    
 
                 viewModel.icon
                     .font(.headline)
-                    .frame(width: 32, alignment: .center)
+                    .frame(width: 32, alignment: .trailing)
+                    
 
             }
         }
