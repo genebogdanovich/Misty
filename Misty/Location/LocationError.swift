@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum LocationError: Error {
-    case locationUpdatesNotAuthorized(description: String)
-}
+//enum LocationError: Error {
+//    case locationUpdatesNotAuthorized(description: String)
+//}

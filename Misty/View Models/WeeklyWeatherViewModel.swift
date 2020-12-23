@@ -37,7 +37,7 @@ class WeeklyWeatherViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    init(locationPublisher: AnyPublisher<[CLLocation], LocationError>, weatherWebService: WeatherFetchable) {
+    init(locationPublisher: AnyPublisher<[CLLocation], Never>, weatherWebService: WeatherFetchable) {
         self.weatherWebService = weatherWebService
         self.locationPublisher = locationPublisher
         
