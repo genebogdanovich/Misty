@@ -23,12 +23,16 @@ struct DailyWeatherRowViewModel: Identifiable {
         return dateFormatter.string(from: item.date)
     }
     
-    var minTemperature: String {
-        return "\(Int(item.main.minTemp))°"
+    var temperatureUnitString: String {
+        if UserDefaults.standard.integer(forKey: "unit_type") == 2 {
+            return "K"
+        }
+        
+        return "°"
     }
     
-    var maxTemperature: String {
-        return "\(Int(item.main.maxTemp))°"
+    var temp: String {
+        return "\(Int(item.main.temp))\(temperatureUnitString)"
     }
     
     var icon: Image {

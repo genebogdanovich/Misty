@@ -12,16 +12,24 @@ import Combine
 struct CurrentWeatherRowViewModel {
     private let item: CurrentWeatherForecastResponse
     
+    var temperatureUnitString: String {
+        if UserDefaults.standard.integer(forKey: "unit_type") == 2 {
+            return "K"
+        }
+        
+        return "°"
+    }
+    
     var temperature: String {
-        return "\(Int(item.main.temperature))°"
+        return "\(Int(item.main.temperature))\(temperatureUnitString)"
     }
     
     var maxTemperature: String {
-        return "\(Int(item.main.maxTemperature))°"
+        return "\(Int(item.main.maxTemperature))\(temperatureUnitString)"
     }
     
     var minTemperature: String {
-        return "\(Int(item.main.minTemperature))°"
+        return "\(Int(item.main.minTemperature))\(temperatureUnitString)"
     }
     
     var humidity: String {
@@ -37,7 +45,7 @@ struct CurrentWeatherRowViewModel {
     }
     
     var feelsLikeTemperature: String {
-        return "\(Int(item.main.feelsLike))°"
+        return "\(Int(item.main.feelsLike))\(temperatureUnitString)"
     }
     
     var pressure: String {
@@ -59,7 +67,14 @@ struct CurrentWeatherRowViewModel {
     }
     
     var windSpeed: String {
-        return "\(Int(item.wind.speed)) m/s ESE"
+        var unitString = "m/s"
+        
+        if UserDefaults.standard.integer(forKey: "unit_type") == 1 {
+            unitString = "mph"
+        }
+        
+        let angle = item.wind.deg
+        return "\(Int(item.wind.speed)) \(unitString) \(angle.direction)"
     }
     
     var icon: Image {
