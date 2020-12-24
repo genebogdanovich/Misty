@@ -14,6 +14,9 @@ struct WeeklyWeatherView: View {
         NavigationView {
             content()
                 .navigationBarTitle("Week", displayMode: .inline)
+                .onAppear {
+                    viewModel.refresh()
+                }
         }
     }
     
