@@ -14,7 +14,6 @@ class CurrentWeatherViewModel: ObservableObject {
     @Published var dataSource: CurrentWeatherRowViewModel?
     
     private let weatherWebService: WeatherFetchable
-    private let locationManager = WeatherLocationManager()
     private let locationPublisher: AnyPublisher<[CLLocation], Never>
     private var cancellables = Set<AnyCancellable>()
     
