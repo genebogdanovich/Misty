@@ -23,27 +23,17 @@ struct DailyWeatherRow: View {
             Spacer()
             
             HStack(spacing: 0) {
-                Text("\(viewModel.maxTemperature)")
-                    .font(.headline)
-                    .fontWeight(.bold)
-                    .frame(width: 32, alignment: .trailing)
-                    
-
-                Text("\(viewModel.minTemperature)")
-                    .font(.headline)
-                    .foregroundColor(.secondary)
-                    .frame(width: 32, alignment: .trailing)
-                    
-
                 viewModel.icon
                     .font(.headline)
-                    .frame(width: 32, alignment: .trailing)
-                    
-
+                    .frame(width: 32, alignment: .center)
+                
+                Text("\(viewModel.temp)")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .frame(width: 50, alignment: .trailing)
             }
         }
     }
-    
     init(viewModel: DailyWeatherRowViewModel) {
         self.viewModel = viewModel
     }
