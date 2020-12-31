@@ -18,7 +18,8 @@ struct CurrentWeatherView: View {
                 .onAppear(perform: {
                     viewModel.refresh()
                 })
-                .navigationBarTitle("Now", displayMode: .inline)
+                .navigationBarTitle("")
+
         }
     }
     

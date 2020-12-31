@@ -13,7 +13,7 @@ struct WeeklyWeatherView: View {
     var body: some View {
         NavigationView {
             content()
-                .navigationBarTitle("Week", displayMode: .inline)
+                .navigationBarTitle("Week")
                 .onAppear {
                     viewModel.refresh()
                 }

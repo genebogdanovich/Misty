@@ -102,40 +102,40 @@ extension WeatherWebService.OpenWeatherAPI {
         switch string {
         case "01d":
             return Image(systemName: "sun.max.fill")
-                .renderingMode(.original)
+                .renderingMode(.template)
         case "01n":
             return Image(systemName: "moon.fill")
-                .renderingMode(.original)
+                .renderingMode(.template)
         case "02d":
             return Image(systemName: "cloud.sun.fill")
-                .renderingMode(.original)
+                .renderingMode(.template)
         case "02n":
             return Image(systemName: "cloud.moon.fill")
-                .renderingMode(.original)
+                .renderingMode(.template)
         case "03d", "03n":
             return Image(systemName: "cloud.fill")
-                .renderingMode(.original)
+                .renderingMode(.template)
         case "04d", "04n":
             return Image(systemName: "smoke.fill")
-                .renderingMode(.original)
+                .renderingMode(.template)
         case "09d", "09n":
             return Image(systemName: "cloud.heavyrain.fill")
-                .renderingMode(.original)
+                .renderingMode(.template)
         case "10d":
             return Image(systemName: "cloud.sun.rain.fill")
-                .renderingMode(.original)
+                .renderingMode(.template)
         case "10n":
             return Image(systemName: "cloud.moon.rain.fill")
-                .renderingMode(.original)
+                .renderingMode(.template)
         case "11d", "11n":
             return Image(systemName: "cloud.bolt.fill")
-                .renderingMode(.original)
+                .renderingMode(.template)
         case "13d", "13n":
             return Image(systemName: "snow")
-                .renderingMode(.original)
+                .renderingMode(.template)
         case "50d", "50n":
             return Image(systemName: "cloud.fog.fill")
-                .renderingMode(.original)
+                .renderingMode(.template)
         default:
             return Image(systemName: "questionmark")
         }
